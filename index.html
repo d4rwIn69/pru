@@ -7,16 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* COLORES EXACTOS DE TU PORTADA */
-            --lila: #C8B5E0;
-            --lila-claro: #E8D5F0;
-            --rosa: #E8A0BF;
-            --rosa-oscuro: #C0809F;
+            --crema: #F5F0E8;
+            --vino: #8B4557;
+            --vino-suave: #A66878;
+            --lila-top: #C8B8D8;
+            --lila-mid: #D8D0E0;
             --dorado: #D4AF37;
-            --dorado-claro: #E8D5A0;
+            --rosa: #C08090;
             --blanco: #FFFFFF;
-            --negro: #2C2C2C;
-            --gris: #777777;
+            --gris: #888888;
         }
 
         * {
@@ -27,17 +26,54 @@
 
         body {
             font-family: 'Lato', sans-serif;
-            background: var(--lila-claro);
-            color: var(--negro);
+            background: var(--crema);
+            color: var(--gris);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             padding: 40px 16px;
+            overflow-x: hidden;
+        }
+
+        /* ─── NIEVE: Puntitos blancos cayendo ─── */
+        .snow-dot {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--blanco);
+            border-radius: 50%;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+            animation: snowfall linear infinite;
+            box-shadow: 0 0 2px rgba(255,255,255,0.3);
+        }
+
+        .snow-dot:nth-child(1)  { left: 10%;  top: -10px; animation-duration: 16s; animation-delay: 0s; }
+        .snow-dot:nth-child(2)  { left: 25%;  top: -10px; animation-duration: 19s; animation-delay: 2s; }
+        .snow-dot:nth-child(3)  { left: 70%;  top: -10px; animation-duration: 17s; animation-delay: 1s; }
+        .snow-dot:nth-child(4)  { left: 85%;  top: -10px; animation-duration: 20s; animation-delay: 4s; }
+        .snow-dot:nth-child(5)  { left: 45%;  top: -10px; animation-duration: 18s; animation-delay: 3s; }
+        .snow-dot:nth-child(6)  { left: 92%;  top: -10px; animation-duration: 15s; animation-delay: 5s; }
+        .snow-dot:nth-child(7)  { left: 15%;  top: -10px; animation-duration: 21s; animation-delay: 1.5s; }
+        .snow-dot:nth-child(8)  { left: 55%;  top: -10px; animation-duration: 14s; animation-delay: 2.5s; }
+        .snow-dot:nth-child(9)  { left: 5%;   top: -10px; animation-duration: 22s; animation-delay: 6s; }
+        .snow-dot:nth-child(10) { left: 78%;  top: -10px; animation-duration: 13s; animation-delay: 0.5s; }
+        .snow-dot:nth-child(11) { left: 32%;  top: -10px; animation-duration: 23s; animation-delay: 3.5s; }
+        .snow-dot:nth-child(12) { left: 62%;  top: -10px; animation-duration: 16s; animation-delay: 4.5s; }
+
+        @keyframes snowfall {
+            0%   { transform: translateY(0) translateX(0); opacity: 0; }
+            10%  { opacity: 0.35; }
+            90%  { opacity: 0.35; }
+            100% { transform: translateY(100vh) translateX(15px); opacity: 0; }
         }
 
         .container {
             width: 100%;
             max-width: 380px;
+            position: relative;
+            z-index: 1;
             text-align: center;
         }
 
@@ -50,11 +86,10 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            border: 3px solid var(--dorado);
+            border: 2px solid var(--vino);
             margin: 0 auto;
             padding: 4px;
-            background: var(--blanco);
-            box-shadow: 0 6px 25px rgba(200, 181, 224, 0.2);
+            background: var(--crema);
         }
 
         .logo-ring img {
@@ -74,15 +109,15 @@
             justify-content: center;
             font-family: 'Playfair Display', serif;
             font-size: 2.6rem;
-            color: var(--negro);
-            background: var(--blanco);
+            color: var(--vino);
+            background: var(--crema);
         }
 
         .brand {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            color: var(--negro);
+            color: var(--vino);
             margin-top: 16px;
         }
 
@@ -90,7 +125,7 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 1.35rem;
-            color: var(--negro);
+            color: var(--vino);
             margin-top: 6px;
             line-height: 1.3;
         }
@@ -118,6 +153,7 @@
             height: 1px;
             background: var(--dorado);
             position: relative;
+            opacity: 0.6;
         }
 
         .divider::before, .divider::after {
@@ -162,10 +198,16 @@
             transition: all 0.3s ease;
             border: 1.5px solid;
             background: var(--blanco);
+            color: var(--vino);
+            border-color: rgba(139, 69, 87, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 69, 87, 0.08);
+            background: var(--vino);
+            color: var(--blanco);
+            border-color: var(--vino);
         }
 
         .icon-wrap {
@@ -177,120 +219,20 @@
             justify-content: center;
             flex-shrink: 0;
             overflow: hidden;
-            background: #f5f5f5;
+            background: rgba(139, 69, 87, 0.06);
+            border: 1px solid rgba(139, 69, 87, 0.1);
         }
 
         .icon-wrap img {
-            width: 65%;
-            height: 65%;
+            width: 60%;
+            height: 60%;
             object-fit: contain;
         }
 
-        .btn-whatsapp { border-color: rgba(37, 211, 102, 0.25); color: #25D366; }
-        .btn-whatsapp:hover { background: #25D366; color: #fff; }
-        .btn-whatsapp .icon-wrap { background: rgba(37, 211, 102, 0.08); }
-
-        .btn-facebook { border-color: rgba(24, 119, 242, 0.25); color: #1877F2; }
-        .btn-facebook:hover { background: #1877F2; color: #fff; }
-        .btn-facebook .icon-wrap { background: rgba(24, 119, 242, 0.08); }
-
-        .btn-youtube { border-color: rgba(255, 0, 0, 0.25); color: #FF0000; }
-        .btn-youtube:hover { background: #FF0000; color: #fff; }
-        .btn-youtube .icon-wrap { background: rgba(255, 0, 0, 0.08); }
-
-        .btn-instagram { border-color: rgba(228, 64, 95, 0.25); color: #E4405F; }
-        .btn-instagram:hover { background: #E4405F; color: #fff; }
-        .btn-instagram .icon-wrap { background: rgba(228, 64, 95, 0.08); }
-
-        /* ─── Catálogo (ABAJO de las redes) ─── */
-        .catalogo-section {
-            margin: 28px 0;
-        }
-
-        .catalogo-header {
-            background: var(--lila);
-            border-radius: 18px;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .catalogo-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--negro);
-            font-weight: 600;
-        }
-
-        .catalogo-portada {
-            background: var(--blanco);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid var(--lila);
-            box-shadow: 0 4px 20px rgba(200, 181, 224, 0.15);
-        }
-
-        .catalogo-portada img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .portada-fallback {
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--lila) 0%, var(--blanco) 60%);
-        }
-
-        .portada-fallback .ano {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--blanco);
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .portada-fallback .titulo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--blanco);
-            font-weight: 600;
-            margin: 4px 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .portada-fallback .mascota {
-            font-size: 4rem;
-            margin: 10px 0;
-        }
-
-        .portada-fallback .logo-texto {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--negro);
-            font-style: italic;
-        }
-
-        .portada-fallback .sub {
-            font-size: 0.8rem;
-            color: var(--gris);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .portada-fallback .frase {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 0.95rem;
-            color: var(--rosa);
-            margin-top: 8px;
-        }
-
-        /* Botón Ver Catálogo (al final) */
+        /* ─── BOTÓN CATÁLOGO (ARRIBA de la portada) ─── */
         .btn-catalogo {
             display: block;
-            margin-top: 18px;
+            margin: 15px 0 20px;
             padding: 18px;
             border-radius: 50px;
             text-decoration: none;
@@ -298,17 +240,97 @@
             font-size: 1.05rem;
             font-weight: 600;
             letter-spacing: 0.5px;
-            background: var(--rosa);
-            color: var(--blanco);
-            border: 2px solid var(--rosa);
+            background: var(--vino);
+            color: var(--crema);
+            border: 2px solid var(--vino);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .btn-catalogo:hover {
-            background: var(--rosa-oscuro);
-            border-color: var(--rosa-oscuro);
+            background: var(--vino-suave);
+            border-color: var(--vino-suave);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(232, 160, 191, 0.25);
+            box-shadow: 0 10px 30px rgba(139, 69, 87, 0.12);
+        }
+
+        /* ─── Portada del Catálogo (gradiente lila a blanco) ─── */
+        .portada-catalogo {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 69, 87, 0.12);
+            box-shadow: 0 2px 12px rgba(139, 69, 87, 0.05);
+        }
+
+        .portada-gradiente {
+            background: linear-gradient(180deg, #B8A8C8 0%, #C8B8D8 30%, #D8D0E0 55%, #E8E4EC 75%, #F5F5F7 90%, var(--blanco) 100%);
+            padding: 25px 20px 10px;
+            text-align: center;
+        }
+
+        .ano-2026 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            color: var(--vino);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            opacity: 0.7;
+        }
+
+        .titulo-catalogo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--vino);
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+        }
+
+        .portada-imagen {
+            padding: 15px 20px;
+            background: linear-gradient(180deg, var(--blanco) 0%, #F8F8FA 30%, #F0EEF3 60%, #E8E4EC 100%);
+            text-align: center;
+        }
+
+        .portada-imagen img {
+            max-width: 160px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .portada-bottom {
+            padding: 15px 20px 25px;
+            text-align: center;
+            background: linear-gradient(180deg, #E8E4EC 0%, #F5F5F7 40%, var(--blanco) 100%);
+        }
+
+        .logo-mamey {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: var(--vino);
+            font-weight: 600;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .sub-mamey {
+            font-size: 0.75rem;
+            color: var(--gris);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        .frase-rosa {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--rosa);
+            margin-top: 10px;
         }
 
         /* ─── Footer ─── */
@@ -319,7 +341,7 @@
 
         .footer-line {
             font-size: 0.85rem;
-            color: var(--negro);
+            color: var(--vino);
             font-family: 'Playfair Display', serif;
             font-style: italic;
             opacity: 0.85;
@@ -328,10 +350,10 @@
 
         .footer-brand {
             font-size: 0.72rem;
-            color: var(--dorado);
+            color: var(--gris);
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         /* Animación */
@@ -350,8 +372,23 @@
         .d3 { animation-delay: 0.4s; }
         .d4 { animation-delay: 0.55s; }
     </style>
+<base target="_blank">
 </head>
 <body>
+
+    <!-- 12 puntitos blancos cayendo -->
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
+    <div class="snow-dot"></div>
 
     <div class="container">
         <!-- LOGO -->
@@ -372,67 +409,63 @@
         </div>
 
         <!-- REDES SOCIALES (PRIMERO) -->
-        <div class="separator animate d2">✦ Conecta con nosotros ✦</div>
+        <div class="separator animate d2">Conecta con nosotros</div>
 
         <div class="links animate d2">
-            <a href="https://wa.me/593994648312" class="btn btn-whatsapp" target="_blank">
+            <a href="https://wa.me/593994648312" class="btn" target="_blank">
                 <span class="icon-wrap">
-                    <img src="wa.png" alt="WhatsApp" onerror="this.style.display='none'; this.parentElement.style.background='rgba(37,211,102,0.15)'; this.parentElement.innerHTML='💬'">
+                    <img src="wa.png" alt="WhatsApp" onerror="this.style.display='none'; this.parentElement.innerHTML='💬'">
                 </span>
                 WhatsApp
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61588974013593" class="btn btn-facebook" target="_blank">
+            <a href="https://www.facebook.com/profile.php?id=61588974013593" class="btn" target="_blank">
                 <span class="icon-wrap">
-                    <img src="fb.png" alt="Facebook" onerror="this.style.display='none'; this.parentElement.style.background='rgba(24,119,242,0.15)'; this.parentElement.innerHTML='f'">
+                    <img src="fb.png" alt="Facebook" onerror="this.style.display='none'; this.parentElement.innerHTML='f'">
                 </span>
                 Facebook
             </a>
-            <a href="https://www.youtube.com/@Mamey.ec28" class="btn btn-youtube" target="_blank">
+            <a href="https://www.youtube.com/@Mamey.ec28" class="btn" target="_blank">
                 <span class="icon-wrap">
-                    <img src="yt.png" alt="YouTube" onerror="this.style.display='none'; this.parentElement.style.background='rgba(255,0,0,0.15)'; this.parentElement.innerHTML='▶'">
+                    <img src="yt.png" alt="YouTube" onerror="this.style.display='none'; this.parentElement.innerHTML='▶'">
                 </span>
                 YouTube
             </a>
-            <a href="https://www.instagram.com/mamey0428" class="btn btn-instagram" target="_blank">
+            <a href="https://www.instagram.com/mamey0428" class="btn" target="_blank">
                 <span class="icon-wrap">
-                    <img src="ig.png" alt="Instagram" onerror="this.style.display='none'; this.parentElement.style.background='rgba(228,64,95,0.15)'; this.parentElement.innerHTML='📷'">
+                    <img src="ig.png" alt="Instagram" onerror="this.style.display='none'; this.parentElement.innerHTML='📷'">
                 </span>
                 Instagram
             </a>
         </div>
 
-        <!-- CATÁLOGO (ABAJO) -->
-        <div class="catalogo-section animate d3">
-            <div class="catalogo-header">
-                <h3>✦ Nuestro Catálogo 2026 ✦</h3>
+        <!-- BOTÓN CATÁLOGO (ARRIBA de la portada) -->
+        <a href="https://canva.link/lar517ubkvcg585" class="btn-catalogo animate d3" target="_blank">
+            Ver Catálogo Completo
+        </a>
+
+        <!-- PORTADA DEL CATÁLOGO (gradiente lila a blanco) -->
+        <div class="portada-catalogo animate d3">
+            <div class="portada-gradiente">
+                <div class="ano-2026">2026</div>
+                <h2 class="titulo-catalogo">Catálogo</h2>
             </div>
 
-            <div class="catalogo-portada">
-                <!-- Opción 1: Si tienes la imagen de la portada -->
-                <img src="catalogo-portada.jpg" alt="Catálogo Mamey 2026" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                
-                <!-- Opción 2: Fallback con los colores de tu portada -->
-                <div class="portada-fallback" style="display: none;">
-                    <div class="ano">2026</div>
-                    <div class="titulo">Catálogo</div>
-                    <div class="mascota">🧸</div>
-                    <div class="logo-texto">Mamey</div>
-                    <div class="sub">Imaginación y Colores</div>
-                    <div class="frase">Descubre las novedades que tenemos para ti</div>
-                </div>
+            <div class="portada-imagen">
+                <img src="mamey.png" alt="Mamey" 
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=padding:30px;font-family:Playfair+Display;font-size:1.5rem;color:#8B4557;opacity:0.3;>mamey.png</div>'">
             </div>
 
-            <!-- Botón Ver Catálogo (al final de todo) -->
-            <a href="https://canva.link/lar517ubkvcg585" class="btn-catalogo animate d4" target="_blank">
-                📖 Ver Catálogo Completo
-            </a>
+            <div class="portada-bottom">
+                <h3 class="logo-mamey">Mamey</h3>
+                <div class="sub-mamey">Imaginación y Colores</div>
+                <p class="frase-rosa">Descubre las novedades que tenemos para ti</p>
+            </div>
         </div>
 
         <!-- FOOTER -->
         <div class="footer animate d4">
             <div class="footer-line">Hecho con las manos y el corazón en Ecuador</div>
-            <div class="footer-brand">✦ Mamey Ecuador — Detalles que no se marchitan ✦</div>
+            <div class="footer-brand">Mamey Ecuador — Detalles que no se marchitan</div>
         </div>
     </div>
 
